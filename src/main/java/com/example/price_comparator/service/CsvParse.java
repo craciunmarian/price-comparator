@@ -50,7 +50,7 @@ public class CsvParse {
         return entries;
     }
 
-    public List<Discount> parseDiscountCsv(String store, Path filePath) throws IOException, CsvValidationException {
+    public List<Discount> parseDiscountCsv(String store,LocalDate date, Path filePath) throws IOException, CsvValidationException {
         List<Discount> entries = new ArrayList<>();
 
         try (CSVReader reader = new CSVReaderBuilder(new FileReader(filePath.toFile())).withCSVParser(new CSVParserBuilder().withSeparator(';').build()).build()){
@@ -70,6 +70,7 @@ public class CsvParse {
 
                 discount.setProduct(product);
                 discount.setStore(store);
+                discount.setDate(date);
                 discount.setStartDate(LocalDate.parse(line[6]));
                 discount.setEndDate(LocalDate.parse(line[7]));
                 discount.setPercentage(Double.parseDouble(line[8]));

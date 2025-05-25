@@ -37,15 +37,18 @@ public class CsvDataLoader implements CommandLineRunner {
             for (Path file: files){
                 String fileName = file.getFileName().toString();
 
+                //format kaufland_2025-05-08.csv
                 if (fileName.matches("[a-zA-Z]+_\\d{4}-\\d{2}-\\d{2}\\.csv")){
                     String store = fileName.split("_")[0];
                     LocalDate date = LocalDate.parse(fileName.split("_")[1].split("\\.")[0]);
                     List<Price> prices = csvParse.parseStoreCsv(store, date, file);
                     repository.addPrices(prices);
                 }
-                else if (fileName.matches(".+_discount.*\\.csv")){
+                //format kaufland_discounts_2025-05-01.csv
+                else if (fileName.matches(".+_discounts.*\\.csv")){
                     String store = fileName.split("_")[0];
-                    List<Discount> discounts = csvParse.parseDiscountCsv(store, file);
+                    LocalDate date = LocalDate.parse(fileName.split("_")[2].split("\\.")[0]);
+                    List<Discount> discounts = csvParse.parseDiscountCsv(store, date, file);
                     repository.addDiscounts(discounts);
                 }
 

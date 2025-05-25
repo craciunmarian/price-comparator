@@ -1,5 +1,6 @@
 package com.example.price_comparator.controller;
 
+import com.example.price_comparator.dto.DiscountedProduct;
 import com.example.price_comparator.model.Discount;
 import com.example.price_comparator.service.BestDiscountsService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ public class BestDiscountController {
     }
 
     @GetMapping("/list")
-    public List<Discount> getBestDiscounts(@RequestParam(defaultValue = "25") int limit){
+    public List<DiscountedProduct> getBestDiscounts(@RequestParam(defaultValue = "100") int limit){
         return discountsService.getBestDiscounts(limit);
     }
 

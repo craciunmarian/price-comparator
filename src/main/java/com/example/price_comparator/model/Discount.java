@@ -8,6 +8,7 @@ public class Discount {
     private LocalDate startDate;
     private LocalDate endDate;
     private double percentage;
+    private LocalDate date;
 
     public Discount() {
     }
@@ -52,6 +53,14 @@ public class Discount {
         this.percentage = percentage;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Discount{" +
@@ -60,6 +69,7 @@ public class Discount {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", percentage=" + percentage +
+                ", date=" + date +
                 '}';
     }
 }
