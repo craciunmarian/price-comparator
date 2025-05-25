@@ -5,12 +5,10 @@ import com.example.price_comparator.model.Price;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class PriceRepositoryData implements PriceRepository{
+public class PriceDataRepository implements PriceRepository{
     private final List<Price> prices = new ArrayList<>();
     private final List<Discount> discounts = new ArrayList<>();
 
@@ -33,4 +31,11 @@ public class PriceRepositoryData implements PriceRepository{
         return discounts;
     }
 
+    @Override
+    public String toString() {
+        return "PriceRepositoryData{" +
+                "prices=" + prices +
+                ", discounts=" + discounts +
+                '}';
+    }
 }

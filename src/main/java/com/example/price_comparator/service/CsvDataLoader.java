@@ -2,7 +2,7 @@ package com.example.price_comparator.service;
 
 import com.example.price_comparator.model.Discount;
 import com.example.price_comparator.model.Price;
-import com.example.price_comparator.repository.PriceRepositoryData;
+import com.example.price_comparator.repository.PriceDataRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,15 +13,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.regex.Pattern;
 
 @Component
 public class CsvDataLoader implements CommandLineRunner {
 
-    private final CsvParse csvParse = new CsvParse();
-    private final PriceRepositoryData repository = new PriceRepositoryData();
+    private final CsvParse csvParse;
+    private final PriceDataRepository repository;
 
     private final Path directory = Paths.get("src/main/resources/csv");
+
+    public CsvDataLoader(CsvParse csvParse, PriceDataRepository repository) {
+        this.csvParse = csvParse;
+        this.repository = repository;
+    }
 
     public void run(String... args) throws Exception{
         if (!Files.exists(directory)) {
@@ -49,7 +53,6 @@ public class CsvDataLoader implements CommandLineRunner {
         } catch (IOException e){
             System.err.println("Error" + e.getMessage());
         }
-
     }
 
 }
