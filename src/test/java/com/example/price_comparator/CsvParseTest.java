@@ -3,13 +3,17 @@ package com.example.price_comparator;
 import com.example.price_comparator.model.Price;
 import com.example.price_comparator.service.CsvParse;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
 
+@SpringBootTest
 public class CsvParseTest {
+    @Autowired
     CsvParse csvParse;
 
     @Test
