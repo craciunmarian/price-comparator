@@ -38,6 +38,7 @@ public class CsvParse {
                 product.setUnit(line[5]);
 
                 price.setStore(store);
+                price.setProduct(product);
                 price.setPrice(Double.parseDouble(line[6]));
                 price.setCurrency(line[7]);
                 price.setDate(date);
@@ -49,7 +50,7 @@ public class CsvParse {
         return entries;
     }
 
-    public List<Discount> parseDiscountCsv(String store, LocalDate date, Path filePath) throws IOException, CsvValidationException {
+    public List<Discount> parseDiscountCsv(String store, Path filePath) throws IOException, CsvValidationException {
         List<Discount> entries = new ArrayList<>();
 
         try (CSVReader reader = new CSVReaderBuilder(new FileReader(filePath.toFile())).withCSVParser(new CSVParserBuilder().withSeparator(';').build()).build()){
