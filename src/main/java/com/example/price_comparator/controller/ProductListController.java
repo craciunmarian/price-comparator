@@ -21,7 +21,7 @@ public class ProductListController {
 
     @GetMapping("/list")
     public List<Price> getBestDiscounts(@RequestParam(defaultValue = "100") int limit){
-        return productListService.GetPriceList(limit);
+        return productListService.getPriceList(limit);
     }
 
 }

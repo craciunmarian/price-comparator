@@ -38,6 +38,7 @@ public class CsvDataLoader implements CommandLineRunner {
                 String fileName = file.getFileName().toString();
 
                 //format kaufland_2025-05-08.csv
+                //regex expressions to get store and date from file name
                 if (fileName.matches("[a-zA-Z]+_\\d{4}-\\d{2}-\\d{2}\\.csv")){
                     String store = fileName.split("_")[0];
                     LocalDate date = LocalDate.parse(fileName.split("_")[1].split("\\.")[0]);

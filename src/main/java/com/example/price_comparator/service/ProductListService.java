@@ -14,7 +14,7 @@ public class ProductListService {
         this.repository = repository;
     }
 
-    public List<Price> GetPriceList(int limit){
+    public List<Price> getPriceList(int limit){
         return repository.getPrices();
     }
 
