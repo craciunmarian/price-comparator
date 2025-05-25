@@ -41,7 +41,7 @@ public class BestDiscountsService {
 
                 if (!p.getDate().isAfter(discount.getEndDate()) && !p.getDate().isBefore(discount.getStartDate())){
                     double discountedPrice = p.getPrice() * (1 - discount.getPercentage() / 100.0);
-                    result.add(new DiscountedProduct(discount, discountedPrice, p.getCurrency(), p.getDate()));
+                    result.add(new DiscountedProduct(discount, discountedPrice, p.getCurrency(), p.getDate(), p.getProduct().getUnit(), p.getQuantity()));
                 }
             }
 

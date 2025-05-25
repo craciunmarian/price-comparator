@@ -61,6 +61,11 @@ public class Price {
         this.date = date;
     }
 
+    public double getValuePerUnit() {
+        if (quantity == 0) return 0;
+        return price/quantity;
+    }
+
     @Override
     public String toString() {
         return "Price{" +

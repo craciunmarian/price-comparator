@@ -10,12 +10,19 @@ public class DiscountedProduct {
     private double discountedPrice;
     private String currency;
     private LocalDate date;
+    private String unit;
+    private double quantity;
+    private String valuePerUnit;
 
-    public DiscountedProduct(Discount discount, double discountedPrice, String currency, LocalDate date) {
+    public DiscountedProduct(Discount discount, double discountedPrice, String currency, LocalDate date, String unit, double quantity) {
         this.discount = discount;
         this.discountedPrice = discountedPrice;
         this.currency = currency;
         this.date = date;
+        this.unit = unit;
+        this.quantity = quantity;
+        this.valuePerUnit = String.format("%.2f", discountedPrice/quantity) + " " + currency + "/" + unit;
+
     }
 
     public LocalDate getDate() {
@@ -32,5 +39,17 @@ public class DiscountedProduct {
 
     public String getCurrency() {
         return currency;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public String getValuePerUnit() {
+        return valuePerUnit;
     }
 }
